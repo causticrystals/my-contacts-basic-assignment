@@ -35,6 +35,7 @@ function displayContacts() {
     outputStr += getContactHTMLStr(contacts[i], i);
   }
   outputEl.innerHTML = outputStr;
+  loadContacts();
 }
 
 function addContact() {
@@ -46,14 +47,28 @@ function addContact() {
   JSON.stringify(newContact);
   contacts.push(newContact);
   outputEl.innerHTML = `${newContact.name} has been added as a contact.`;
+  saveContacts();
 }
 
 function removeContact() {
-  console.log('Remove Contact');
+  let index = +prompt("Enter index # of contact you want to remove");
+  if (index >= 0 && index < contacts.length) {
+    contacts.splice(index, 1);
+    saveContacts();
+    displayContacts();
+  } else {
+    alert("Invalid index #");
+  }
 }
 
 function displayByName() {
-  console.log('Display by Name');
+  let nameSearch = prompt("Search for name:");
+  let divStr = "";
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].includes(inputEl.value)) {
+      divStr += `<div style="background: ${colors[i]}">${colors[i]}</div>`; //fix this
+    }
+  }
 }
 
 function displayByCountry() {
@@ -72,4 +87,15 @@ function getContactHTMLStr(contact, i) {
       ${contact.phone} (${contact.country})
     </div> 
     `;
+}
+
+// Save contact array to local storage
+function saveContacts() {
+  localStorage.setItem("contacts", JSON.stringify(contacts));
+}
+
+// Load contacts from local storage
+function loadContacts() {
+  let contactStr = localStorage.getItem("contacts");
+  return JSON.parse(contactStr) ?? [];
 }
