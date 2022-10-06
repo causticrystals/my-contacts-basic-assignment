@@ -8,6 +8,9 @@ let outputEl = document.getElementById('output');
 // Go Btn - Menu Listener
 goBtnEl.addEventListener('click', goBtnHandler);
 
+// Global Variables
+let contacts = [];
+
 function goBtnHandler() {
   // Get Menu Selection
   let selection = menuEl.value;
@@ -27,11 +30,22 @@ function goBtnHandler() {
 
 // MENU FUNCTIONS
 function displayContacts() {
-  console.log('Display Contacts');
+  let outputStr = "";
+  for (let i = 0; i < contacts.length; i++) {
+    outputStr += getContactHTMLStr(contacts[i], i);
+  }
+  outputEl.innerHTML = outputStr;
 }
 
 function addContact() {
-  console.log('Add Contact');
+  let name = {name: prompt("Enter Full Name:")};
+  let email = {email: prompt("Enter Email:")};
+  let phone = {phone: prompt("Enter Phone Number:")};
+  let country = {country: prompt("Enter Country")};
+  let newContact = Object.assign(name, email, phone, country);
+  JSON.stringify(newContact);
+  contacts.push(newContact);
+  outputEl.innerHTML = `${newContact.name} has been added as a contact.`;
 }
 
 function removeContact() {
@@ -44,4 +58,18 @@ function displayByName() {
 
 function displayByCountry() {
   console.log('Display by Country');
+}
+
+// HELPER FUNCTIONS
+// Get HTML for contact
+function getContactHTMLStr(contact, i) {
+  return `
+    <div>
+      ${i}: ${contact.name} 
+      <br>
+      ${contact.email} 
+      <br>
+      ${contact.phone} (${contact.country})
+    </div> 
+    `;
 }
