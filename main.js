@@ -9,7 +9,7 @@ let outputEl = document.getElementById('output');
 goBtnEl.addEventListener('click', goBtnHandler);
 
 // Global Variables
-let contacts = [];
+let contacts = loadContacts();
 
 function goBtnHandler() {
   // Get Menu Selection
@@ -65,10 +65,11 @@ function displayByName() {
   let nameSearch = prompt("Search for name:");
   let divStr = "";
   for (let i = 0; i < contacts.length; i++) {
-    if (contacts[i].includes(inputEl.value)) {
-      divStr += `<div style="background: ${colors[i]}">${colors[i]}</div>`; //fix this
+    if (contacts[i].includes(nameSearch)) { 
+      divStr += `<div>${contacts[i]}</div>`;
     }
   }
+  return divStr;
 }
 
 function displayByCountry() {
