@@ -65,8 +65,8 @@ function displayByName() {
   let nameSearch = prompt("Search for name:");
   let divStr = "";
   for (let i = 0; i < contacts.length; i++) {
-    if (contacts[i].includes(nameSearch)) { 
-      divStr += `<div>${contacts[i]}</div>`;
+    if(contacts[i].includes()) {
+      divStr = `<div>${contacts[i]}</div>`;
     }
   }
   return divStr;
