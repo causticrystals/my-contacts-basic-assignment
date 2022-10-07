@@ -61,11 +61,11 @@ function removeContact() {
   }
 }
 
-function displayByName() {
+function displayByName() { // fix this
   let nameSearch = prompt("Search for name:");
   let divStr = "";
   for (let i = 0; i < contacts.length; i++) {
-    if(contacts[i].includes()) {
+    if(contacts[i].includes(nameSearch, contacts.name)) {
       divStr = `<div>${contacts[i]}</div>`;
     }
   }
