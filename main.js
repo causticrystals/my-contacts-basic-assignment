@@ -61,19 +61,24 @@ function removeContact() {
   }
 }
 
-function displayByName() { // fix this
-  let nameSearch = prompt("Search for name:");
-  let divStr = "";
+function displayByName() {
+  let nameSearch = prompt("Search for name (Case sensitive):");
   for (let i = 0; i < contacts.length; i++) {
-    if(contacts[i].includes(nameSearch, contacts.name)) {
-      divStr = `<div>${contacts[i]}</div>`;
+    let contactName = contacts[i].name;
+    if (contactName.includes(nameSearch)) {
+      console.log("hi");
     }
   }
-  return divStr;
 }
 
 function displayByCountry() {
-  console.log('Display by Country');
+  let countrySearch = prompt("Search for country (Case sensitive):");
+  for (let i = 0; i < contacts.length; i++) {
+    let contactCountry = contacts[i].country;
+    if (contactCountry.includes(countrySearch)) {
+      console.log("hi");
+    }
+  }
 }
 
 // HELPER FUNCTIONS
