@@ -11,6 +11,9 @@ goBtnEl.addEventListener('click', goBtnHandler);
 // Global Variables
 let contacts = loadContacts();
 
+// Display contacts when page loads
+displayContacts();
+
 function goBtnHandler() {
   // Get Menu Selection
   let selection = menuEl.value;
@@ -25,6 +28,8 @@ function goBtnHandler() {
     displayByName();
   } else if (selection === 'display-country') {
     displayByCountry();
+  } else if (selection === "search-email") {
+    displayByEmail();
   }
 }
 
@@ -85,6 +90,18 @@ function displayByCountry() {
   outputEl.innerHTML = outputStr;
 }
 
+function displayByEmail() {
+  let emailSearch = prompt("Search by email:");
+  let outputStr = "";
+  for (let i = 0; i < contacts.length; i++) {
+    let contactEmail = contacts[i].email;
+    if (contactEmail.includes(emailSearch)) {
+      outputStr += getContactHTMLStr(contacts[i], i);
+    }
+  }
+  outputEl.innerHTML = outputStr;
+}
+
 // HELPER FUNCTIONS
 // Get HTML for contact
 function getContactHTMLStr(contact, i) {
@@ -108,4 +125,9 @@ function saveContacts() {
 function loadContacts() {
   let contactStr = localStorage.getItem("contacts");
   return JSON.parse(contactStr) ?? [];
+}
+
+// Search global contacts array for a contact with the provided email
+function findByEmail(email) {
+
 }
