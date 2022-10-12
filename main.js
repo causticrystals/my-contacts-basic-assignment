@@ -63,22 +63,26 @@ function removeContact() {
 
 function displayByName() {
   let nameSearch = prompt("Search for name (Case sensitive):");
+  let outputStr = "";
   for (let i = 0; i < contacts.length; i++) {
     let contactName = contacts[i].name;
     if (contactName.includes(nameSearch)) {
-      console.log("hi");
+      outputStr += getContactHTMLStr(contacts[i], i);
     }
   }
+  outputEl.innerHTML = outputStr;
 }
 
 function displayByCountry() {
   let countrySearch = prompt("Search for country (Case sensitive):");
+  let outputStr = "";
   for (let i = 0; i < contacts.length; i++) {
     let contactCountry = contacts[i].country;
     if (contactCountry.includes(countrySearch)) {
-      console.log("hi");
+      outputStr += getContactHTMLStr(contacts[i], i);
     }
   }
+  outputEl.innerHTML = outputStr;
 }
 
 // HELPER FUNCTIONS
