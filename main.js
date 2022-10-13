@@ -129,5 +129,11 @@ function loadContacts() {
 
 // Search global contacts array for a contact with the provided email
 function findByEmail(email) {
-  
+  for (let i = 0; i < contacts.length; i++) {
+    let contactEmail = contacts[i].email;
+    if (email === contactEmail) {
+      return i;
+    }
+  }
+  return -1;
 }
