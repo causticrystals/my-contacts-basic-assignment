@@ -51,7 +51,7 @@ function addContact() {
   let phone = {phone: prompt("Enter Phone Number:")};
   let country = {country: prompt("Enter Country")};
   let email = {email: prompt("Enter Email:")};
-  
+
   // Check if new email is in use already
   let newEmail = Object.values(email).toString();
   let testEmail = findByEmail(newEmail);
@@ -67,13 +67,13 @@ function addContact() {
 }
 
 function removeContact() {
-  let index = +prompt("Enter index # of contact you want to remove");
-  if (index >= 0 && index < contacts.length) {
-    contacts.splice(index, 1);
-    saveContacts();
-    displayContacts();
-  } else {
-    alert("Invalid index #");
+  let contactGone = prompt("Enter the email of the contact you want to remove.");
+  for (let i = 0; i < contacts.length; i++) {
+    if (contactGone === contacts[i].email) {
+      contacts.splice(i, 1);
+      saveContacts();
+      displayContacts();
+    }
   }
 }
 
@@ -118,7 +118,7 @@ function displayByEmail() {
 function getContactHTMLStr(contact, i) {
   return `
     <div>
-      ${i}: ${contact.name} 
+      ${contact.name} 
       <br>
       ${contact.email} 
       <br>
