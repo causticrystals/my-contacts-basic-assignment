@@ -33,6 +33,9 @@ function goBtnHandler() {
   }
 }
 
+// test
+let test = {test: 10};
+
 // MENU FUNCTIONS
 function displayContacts() {
   let outputStr = "";
@@ -45,14 +48,22 @@ function displayContacts() {
 
 function addContact() {
   let name = {name: prompt("Enter Full Name:")};
-  let email = {email: prompt("Enter Email:")};
   let phone = {phone: prompt("Enter Phone Number:")};
   let country = {country: prompt("Enter Country")};
-  let newContact = Object.assign(name, email, phone, country);
-  JSON.stringify(newContact);
-  contacts.push(newContact);
-  outputEl.innerHTML = `${newContact.name} has been added as a contact.`;
-  saveContacts();
+  let email = {email: prompt("Enter Email:")};
+  
+  // Check if new email is in use already
+  let newEmail = Object.values(email).toString();
+  let testEmail = findByEmail(newEmail);
+  if (testEmail === -1) {
+    let newContact = Object.assign(name, email, phone, country);
+    JSON.stringify(newContact);
+    contacts.push(newContact);
+    outputEl.innerHTML = `${newContact.name} has been added as a contact.`;
+    saveContacts();
+  } else {
+    alert("Contact with that email already exists.");
+  }
 }
 
 function removeContact() {
