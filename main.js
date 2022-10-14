@@ -107,7 +107,7 @@ function displayByEmail() {
   for (let i = 0; i < contacts.length; i++) {
     let contactEmail = contacts[i].email;
     if (contactEmail.includes(emailSearch)) {
-      outputStr += getContactHTMLStr(contacts[i], i);
+      outputStr += getContactHTMLStr(contacts[i]);
     }
   }
   outputEl.innerHTML = outputStr;
@@ -115,7 +115,7 @@ function displayByEmail() {
 
 // HELPER FUNCTIONS
 // Get HTML for contact
-function getContactHTMLStr(contact, i) {
+function getContactHTMLStr(contact,) {
   return `
     <div>
       ${contact.name} 
