@@ -33,9 +33,6 @@ function goBtnHandler() {
   }
 }
 
-// test
-let test = {test: 10};
-
 // MENU FUNCTIONS
 function displayContacts() {
   let outputStr = "";
