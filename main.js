@@ -75,7 +75,7 @@ function removeContact() {
 }
 
 function displayByName() {
-  let nameSearch = prompt("Search for name (Case sensitive):");
+  let nameSearch = prompt("Search for name (Case Sensitive)");
   let outputStr = "";
   for (let i = 0; i < contacts.length; i++) {
     let contactName = contacts[i].name;
@@ -87,11 +87,11 @@ function displayByName() {
 }
 
 function displayByCountry() {
-  let countrySearch = prompt("Search for country (Case sensitive):");
+  let countrySearch = prompt("Search for country");
   let outputStr = "";
   for (let i = 0; i < contacts.length; i++) {
     let contactCountry = contacts[i].country;
-    if (contactCountry.includes(countrySearch)) {
+    if (contactCountry.toLowerCase() === countrySearch.toLowerCase()) {
       outputStr += getContactHTMLStr(contacts[i], i);
     }
   }
