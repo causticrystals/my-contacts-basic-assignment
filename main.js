@@ -75,11 +75,12 @@ function removeContact() {
 }
 
 function displayByName() {
-  let nameSearch = prompt("Search for name (Case Sensitive)");
+  let nameSearch = prompt("Search for name");
   let outputStr = "";
   for (let i = 0; i < contacts.length; i++) {
-    let contactName = contacts[i].name;
-    if (contactName.includes(nameSearch)) {
+    let lowerContactName = contacts[i].name.toLowerCase();
+    let lowerNameSearch = nameSearch.toLowerCase();
+    if (lowerContactName.includes(lowerNameSearch)) {
       outputStr += getContactHTMLStr(contacts[i], i);
     }
   }
