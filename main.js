@@ -100,7 +100,7 @@ function displayByCountry() {
 }
 
 function displayByEmail() {
-  let emailSearch = prompt("Search by email:");
+  let emailSearch = prompt("Search by email");
   let outputStr = "";
   for (let i = 0; i < contacts.length; i++) {
     let contactEmail = contacts[i].email;
@@ -113,7 +113,7 @@ function displayByEmail() {
 
 // HELPER FUNCTIONS
 // Get HTML for contact
-function getContactHTMLStr(contact,) {
+function getContactHTMLStr(contact) {
   return `
     <div>
       ${contact.name} 
